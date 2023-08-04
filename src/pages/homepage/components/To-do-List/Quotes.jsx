@@ -2,13 +2,14 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 
 
-const Quotes =() =>{
-    const [quote,setQuote]=useState("")
+const Quotes =({refreshHook}) =>{
+    const [quote,setQuote]=useState("meow meow")
     const [author,setAuthor]=useState("")
+
 
    useEffect(()=>{
     const category = 'happiness';
-    const apiKey = 'YOUR_API_KEY';
+    const apiKey = 'rAz96XIBFF953K78hljRFQ==HmnZSOST9IMI9895';
 
     axios
       .get('https://api.api-ninjas.com/v1/quotes', {
@@ -16,14 +17,19 @@ const Quotes =() =>{
         headers: { 'X-Api-Key': apiKey },
       })
       .then((response) => {
-        console.log(response.data);
+        const { quote, author } = response?.data?.[0]
+        setQuote(quote)
+        setAuthor(author)
       })
       .catch((error) => {
         console.error('Error:', error.response.data);
       });
-   },[])
+   },[refreshHook])
 return (
-    <h1>{response.data}</h1>
+  <div>
+    <h1>{quote}</h1>
+    <h3>{author}</h3>
+    </div>
 )
 };
 

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import TodoList from "../components/To-do-List/Todo";
+import Quotes from "../components/To-do-List/Quotes";
 
-const Quotes =()=>{
+const Home =()=>{
     //const [type,setType]= useState('')
+    const [temp, setTemp] = useState(0)
     const [showForm,setShowForm]= useState(false)
     const handleShowForm = () => {
       setShowForm(true);
@@ -12,13 +14,18 @@ const Quotes =()=>{
       setShowForm(false);
     };
 
+    const refreshQuote = (e) => {
+      e.preventDefault()
+      setTemp(prev => prev+1)
+    }
+
     return(
         <div className="Quotes">
            
         <h2> This is the quote you will be getting</h2>
-        {/* <Quotes /> */}
+        <Quotes refreshHook={temp} />
         
-        <button>Next</button>
+        <button onClick={refreshQuote}>Next</button>
         <div className='todoform'> 
         {!showForm && (
             <button onClick={handleShowForm}>Open Todo Form</button>
@@ -33,4 +40,4 @@ const Quotes =()=>{
     )
 }
 
-export default Quotes
+export default Home

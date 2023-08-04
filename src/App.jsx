@@ -1,15 +1,15 @@
 //import './App.css'
-import Quotes from './pages/homepage/Main/Homepage'
 import { BrowserRouter,Route,Routes} from 'react-router-dom'
 import Login from './pages/Signup/login'
 import Register from './pages/Signup/register'
+import Home from './pages/homepage/Main/Homepage'
 
 function App(){
   return(
     <>
       <BrowserRouter>
       <Routes>
-        <Route exact path='/' Component={Quotes} />
+        <Route exact path='/' Component={Home} />
         <Route path='/login' Component={Login} />
         <Route path='/register' Component={Register}/>
       </Routes>
