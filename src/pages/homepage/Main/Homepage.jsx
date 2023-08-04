@@ -16,7 +16,7 @@ const Quotes =()=>{
         <div className="Quotes">
            
         <h2> This is the quote you will be getting</h2>
-     
+        {/* <Quotes /> */}
         
         <button>Next</button>
         <div className='todoform'> 
