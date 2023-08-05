@@ -8,6 +8,75 @@ import './Homepage.css'
 const Home =()=>{
 
    const [index,setIndex] =useState(0)
+   const Genre=[
+    "age",
+    "alone",
+    "amazing",
+    "anger",
+    "architecture",
+    "art",
+    "attitude",
+    "beauty",
+    "best",
+    "birthday",
+    "business",
+    "car",
+    "change",
+    "communications",
+    "computers",
+    "cool",
+    "courage",
+    "dad",
+    "dating",
+    "death",
+    "design",
+    "dreams",
+    "education",
+    "environmental",
+    "equality",
+    "experience",
+    "failure",
+    "faith",
+    "family",
+    "famous",
+    "fear",
+    "fitness",
+    "food",
+    "forgiveness",
+    "freedom",
+    "friendship",
+    "funny",
+    "future",
+    "god",
+    "good",
+    "government",
+    "graduation",
+    "great",
+    "happiness",
+    "health",
+    "history",
+    "home",
+    "hope",
+    "humor",
+    "imagination",
+    "inspirational",
+    "intelligence",
+    "jealousy",
+    "knowledge",
+    "leadership",
+    "learning",
+    "legal",
+    "life",
+    "love",
+    "marriage",
+    "medical",
+    "men",
+    "mom",
+    "money",
+    "morning",
+    "movies",
+    "success"
+   ]
 
    const imageUrls=[
     '../src/assets/1.jpeg',
@@ -57,13 +126,34 @@ const Home =()=>{
         refreshQuote(),
         changeBackground()
     }
+    
+    const [genre,setGenre]=useState("")
 
     return(
       <div className="Body" style={{backgroundImage:`url(${imageUrls[index]})`}}>
         <div>
-        <Clock />
+          <div className="Header">
+          <div className="Clock">
+            <Clock />
+          </div>
+          <div className="SelectContainer">
+            <h3>Genre</h3><select 
+            id="genre"
+            value={genre}            
+            onChange={(e)=>setGenre(e.target.value)}
+            // size="7"
+            >
+            {Genre.map((genre) => (
+              <option key={genre}>
+                {genre} 
+              </option>
+              
+            ))}
+            </select>
+          </div>      
+          </div>
         <div className="Quotes" >
-        <Quotes refreshHook={temp} />
+        <Quotes refreshHook={temp} category={genre} />
         
         <button className="Next" 
         style={{

@@ -28,7 +28,9 @@ const Clock =()=>{
         },1000)
     },[])
     return <>
-        <h1>{time}</h1>
+        <h1 style={{
+            fontSize:"60px"
+        }}>{time}</h1>
     </>
 }
 

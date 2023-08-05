@@ -4,13 +4,12 @@ import './Quotes.css'
 
 
 // eslint-disable-next-line react/prop-types
-const Quotes =({refreshHook}) =>{
+const Quotes =({refreshHook,category}) =>{
     const [quote,setQuote]=useState("Please Wait")
     const [author,setAuthor]=useState("Admin")
 
-
    useEffect(()=>{
-    const category = 'happiness';
+    // const category = 'happiness';
     const apiKey = 'rAz96XIBFF953K78hljRFQ==HmnZSOST9IMI9895';
 
     axios
@@ -27,7 +26,7 @@ const Quotes =({refreshHook}) =>{
       .catch((error) => {
         console.error('Error:', error.response.data);
       });
-   },[refreshHook])
+   },[refreshHook,category])
 
 return (
   <div className="QuotesContainer">
