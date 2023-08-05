@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
+import './Quotes.css'
 
 
+// eslint-disable-next-line react/prop-types
 const Quotes =({refreshHook}) =>{
-    const [quote,setQuote]=useState("meow meow")
-    const [author,setAuthor]=useState("")
+    const [quote,setQuote]=useState("Please Wait")
+    const [author,setAuthor]=useState("Admin")
 
 
    useEffect(()=>{
@@ -17,6 +19,7 @@ const Quotes =({refreshHook}) =>{
         headers: { 'X-Api-Key': apiKey },
       })
       .then((response) => {
+        // eslint-disable-next-line no-unsafe-optional-chaining
         const { quote, author } = response?.data?.[0]
         setQuote(quote)
         setAuthor(author)
@@ -25,10 +28,11 @@ const Quotes =({refreshHook}) =>{
         console.error('Error:', error.response.data);
       });
    },[refreshHook])
+
 return (
-  <div>
-    <h1>{quote}</h1>
-    <h3>{author}</h3>
+  <div className="QuotesContainer">
+    <h1>&#34;{quote}&#34;</h1>
+    <h3>-{author}</h3>
     </div>
 )
 };

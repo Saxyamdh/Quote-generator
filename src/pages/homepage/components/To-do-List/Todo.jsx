@@ -41,7 +41,7 @@ const TodoList=()=>{
     }
 
     return(
-        <>
+        <div className="Todo-list">
         <form className="Todo" onSubmit={handleSubmit}>
             <input 
             type="text" 
@@ -59,14 +59,14 @@ const TodoList=()=>{
                     checked={item.completed}
                     onChange={e=>toggleTodo(item.id,e.target.checked)}
                     />
-                {item.title}
+                    {item.title}
                 </label>
                 <button onClick={()=>deleteTodo(item.id)}>Delete</button>
             </li>
            })}
         </ul>
            
-        </>
+        </div>
     )
     
 }
