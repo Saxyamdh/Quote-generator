@@ -1,0 +1,56 @@
+arent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Encode Sans Semi Condensed', sans-serif;
+  }
+  
+  h1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+  
+  .login-form {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+  }
+  
+  .Login {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+  }
+  
+  input {
+    padding: 5px;
+    margin-top: 0.1rem;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    margin-top: 20px;
+    background-color: #0095f6; /* tara register.css bata change garesi change huncha*/
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .p {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 0.9rem;
+  }

@@ -1,0 +1,61 @@
+.register-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   /*font-family: 'Encode Sans Semi Condensed', sans-serif;*/
+  }
+  
+  .register-card {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 320px;
+  }
+  
+  .register-card h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #262626;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    background-color: #0095f6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .register-link {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  
+  .register-link a {
+    color: #262626;
+    text-decoration: none;
+  }
+  
+  .p2{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.90rem;
+  }  

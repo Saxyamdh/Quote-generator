@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {  signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import "./login.css";
 
 const Login= () =>{
    const [email,setEmail] = useState("")
@@ -27,14 +28,17 @@ const Login= () =>{
                 navigate('/')
             }
         })
-    })
-
+    },[])
+    const createAccount=()=>{
+        navigate('/register')
+    }
     return(
-        <div className="login-form">
-            <form className="Login" onSubmit={signIn}>
+        <div className="login-form"> 
+            <h1> QuoteCraft </h1>
+            <form className="Login" onSubmit={signIn}> 
                 <input 
                 type="email" 
-                onChange={e => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)} 
                 value={email}
                 placeholder="Email"
                 />
@@ -46,10 +50,14 @@ const Login= () =>{
                 />
                 <button>Login</button>
             </form>
-            <p>Don`t Have an Account? Sign up</p>
+        
+            <p className="p">
+              Don&apos;t Have an Account?  <a href="#" onClick={createAccount}> Sign up  </a>
+            </p>
+           
         </div>
       
     )
 }
 
-export default Login
+export default Login;

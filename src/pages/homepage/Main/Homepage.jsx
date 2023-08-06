@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoList from "../components/To-do-List/Todo";
 import Quotes from "../components/To-do-List/Quotes";
 import Clock from "../components/To-do-List/clock";
 import './Homepage.css'
-//import { signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebase";
+import { useNavigate } from "react-router-dom";
 
 
 const Home =()=>{
-
-   const [index,setIndex] =useState(0)
-   const Genre=[
+  const [userStatus,setUserStatus]=useState(false)
+  const [genre,setGenre]=useState("")
+  const [temp, setTemp] = useState(0)
+  const [showForm,setShowForm]= useState(false)
+  const [index,setIndex] =useState(0)
+  const navigate =useNavigate()
+  
+  const Genre=[
     "age",
     "alone",
     "amazing",
@@ -79,7 +86,7 @@ const Home =()=>{
     "success"
    ]
 
-   const imageUrls=[
+  const imageUrls=[
     '../src/assets/1.jpeg',
     'src/assets/2.jpeg',
     'src/assets/3.jpeg',
@@ -105,11 +112,7 @@ const Home =()=>{
     setIndex((prev)=>(prev+1)%imageUrls.length)
    }
 
-    const [temp, setTemp] = useState(0)
-    const [showForm,setShowForm]= useState(false)
-
-
-    const handleShowForm = () => {
+   const handleShowForm = () => {
       setShowForm(true);
     };
   
@@ -121,17 +124,43 @@ const Home =()=>{
       setTemp(prev => prev+1)
     }
 
-
     const onClickButtonNext =(e)=>{
         e.preventDefault()
         refreshQuote(),
         changeBackground()
     }
+
+    useEffect(()=>{
+        auth.onAuthStateChanged((user)=>{
+          if(user){
+            setUserStatus(true)
+          }
+        })
+      },[])
     
-    const [genre,setGenre]=useState("")
+      const signIn=()=>{
+          navigate('/login')
+      }
+      const handleSignOut = () => {
+        signOut(auth)
+          .then(() => {
+            setUserStatus(false)
+            navigate("/");
+            alert("You are about to sign out")
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      };
 
     return(
       <div className="Body" style={{backgroundImage:`url(${imageUrls[index]})`}}>
+        {!userStatus &&(
+          <button className="signIn" onClick={signIn}>SignIn</button>
+        )}
+        {userStatus &&(
+          <button className="signIn" onClick={handleSignOut}>SignOut</button>
+        )}
         <div>
           <div className="Header">
           <div className="Clock">
@@ -142,7 +171,7 @@ const Home =()=>{
             id="genre"
             value={genre}            
             onChange={(e)=>setGenre(e.target.value)}
-            // size="7"
+           
             >
             {Genre.map((genre) => (
               <option key={genre}>
