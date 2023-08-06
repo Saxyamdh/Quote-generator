@@ -3,6 +3,7 @@ import TodoList from "../components/To-do-List/Todo";
 import Quotes from "../components/To-do-List/Quotes";
 import Clock from "../components/To-do-List/clock";
 import './Homepage.css'
+//import { signOut } from "firebase/auth";
 
 
 const Home =()=>{

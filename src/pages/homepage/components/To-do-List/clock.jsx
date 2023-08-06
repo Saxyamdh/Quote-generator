@@ -29,7 +29,9 @@ const Clock =()=>{
     },[])
     return <>
         <h1 style={{
-            fontSize:"60px"
+            fontSize:"60px",
+            color:"antiquewhite",
+            fontWeight:"bolder"
         }}>{time}</h1>
     </>
 }
