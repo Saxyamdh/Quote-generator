@@ -20,8 +20,9 @@ const Quotes =({refreshHook,category}) =>{
       .then((response) => {
         // eslint-disable-next-line no-unsafe-optional-chaining
         const { quote, author } = response?.data?.[0]
-        setQuote(quote)
+        setQuote(quote)                                                                                                           
         setAuthor(author)
+        
       })
       .catch((error) => {
         console.error('Error:', error.response.data);
