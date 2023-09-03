@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './todo.css'
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
+import { db } from "../../../../firebase";
 
 
 const TodoList=()=>{
     const [toDo,setTodo]=useState('')
     const [items,setItems]=useState([])
-
-    function handleSubmit(e){
+    
+    const todosRef = collection(db, "todos");
+    
+    async function handleSubmit(e){
         e.preventDefault()
 
         if(toDo.trim() === ""){
@@ -17,8 +21,10 @@ const TodoList=()=>{
                 {id:crypto.randomUUID(),title:toDo,completed:false}
                 ]
             })
-        
-        
+        // const citySnapshot = await getDocs(todosRef);
+        // const cityList = citySnapshot.docs.map(doc => doc.data());
+        // console.log(cityList)
+
         setTodo("")
     }
     function toggleTodo(id,completed){
@@ -46,9 +52,9 @@ const TodoList=()=>{
             <input 
             type="text" 
             value={toDo}
-            onChange={e =>setTodo(e.target.value)}
+            onChange={(e) =>setTodo(e.target.value)}
             />
-            <button>Add Item</button>
+            <button type="submit">Add Item</button>
         </form>
         {console.log(items)}
         <ul className="Todolist">
